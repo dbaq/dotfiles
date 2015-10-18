@@ -47,11 +47,11 @@ need_push () {
 }
 
 user_name() {
-  echo "%{$fg_bold[magenta]%}%n%{$reset_color%}"
+  echo "%{$fg_bold[red]%}%n%{$reset_color%}"
 }
 
 machine_name() {
-  echo "%{$fg_bold[magenta]%}@%m%{$reset_color%}"
+  echo "%{$fg[white]%} at %{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}"
 }
 
 directory_name() {
