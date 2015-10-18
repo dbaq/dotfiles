@@ -20,9 +20,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo " on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo " on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
     fi
   fi
 }
@@ -46,32 +46,27 @@ need_push () {
   fi
 }
 
-ruby_version() {
-  if (( $+commands[rbenv] ))
-  then
-    echo "$(rbenv version | awk '{print $1}')"
-  fi
-
-  if (( $+commands[rvm-prompt] ))
-  then
-    echo "$(rvm-prompt | awk '{print $1}')"
-  fi
+user_name() {
+  echo "%{$fg_bold[magenta]%}%n%{$reset_color%}"
 }
 
-rb_prompt() {
-  if ! [[ -z "$(ruby_version)" ]]
-  then
-    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%} "
-  else
-    echo ""
-  fi
+machine_name() {
+  echo "%{$fg_bold[magenta]%}@%m%{$reset_color%}"
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+smiley_result() {
+  echo "%(?,%{$fg[green]%}ツ%{$reset_color%},%{$fg[red]%}✗%{$reset_color%})"
+}
+
+timep() {
+  echo "%{$fg[white]%}[%*]%{$reset_color%}"
+}
+
+export PROMPT=$'$(timep) $(smiley_result) $(user_name)$(machine_name):$(directory_name)$(git_dirty)$(need_push)$ '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
