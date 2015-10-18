@@ -1,4 +1,6 @@
-# holman does dotfiles
+# dbaq does dotfiles
+
+I forked these dotfiles from @holman. I mostly reused everything, I updated the git aliases to use the git command and the zsh prompt. I also removed the files related to atom and go.
 
 ## dotfiles
 
