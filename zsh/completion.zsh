@@ -9,3 +9,5 @@ zstyle ':completion:*' menu select
 
 # let's use the tag name as group name
 zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*' rehash true
