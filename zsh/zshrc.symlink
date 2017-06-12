@@ -39,3 +39,8 @@ do
 done
 
 unset config_files
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="$PATH:/usr/local/mysql/bin"
+eval "$(jenv init -)"
