@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/myERP
+export PROJECTS=~/oneup.com/oneup
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -44,3 +44,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="$PATH:/usr/local/mysql/bin"
 eval "$(jenv init -)"
+export GPG_TTY=$(tty)
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/dbaq/Downloads/vault vault
+
+complete -o nospace -C /usr/local/bin/vault vault
